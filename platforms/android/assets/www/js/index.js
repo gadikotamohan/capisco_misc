@@ -29,21 +29,6 @@ var app = {
 		catch(e){
           document.write("error: receivedEvent: "+e.message);
         }
-        // var safe = cordova.plugins.disusered.safe;
-        // var path = cordova.file.dataDirectory;
-        // var file_name = "f1.txt"
-
-        // key = 'someKey';
-        // function success(encryptedFile) {
-        //   console.log('Encrypted file: ' + encryptedFile);
-        //   safe.decrypt(encryptedFile, key, function(decryptedFile) {
-        //     console.log('Decrypted file: ' + decryptedFile);
-        //   }, error);
-        // }
-        // function error() {
-        //   console.log('Error with cryptographic operation');
-        // }
-        // safe.encrypt(path+"/"+file_name, key, success, error);
 
     },
     errorHandler: function(e){
@@ -85,6 +70,22 @@ var app = {
 		     };
 		     var blob = new Blob(['Lorem Ipsum'], {type: 'text/plain'});
 		     fileWriter.write(blob);
+         var safe = cordova.plugins.disusered.safe;
+         var path = cordova.file.dataDirectory;
+         var file_name = "log.txt"
+
+         key = 'someKey';
+         function success(encryptedFile) {
+           console.log('Encrypted file: ' + encryptedFile);
+           safe.decrypt(encryptedFile, key, function(decryptedFile) {
+             alert('Decrypted file: ' + decryptedFile);
+           }, error);
+         }
+         function error() {
+           alert('Error with cryptographic operation');
+         }
+         safe.encrypt(path+"/"+file_name, key, success, error);
+
 		   }, app.errorHandler);
 		 }, app.errorHandler);	
      }

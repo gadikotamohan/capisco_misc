@@ -9,4 +9,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
+
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+
 </widget>
